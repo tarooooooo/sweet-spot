@@ -48,3 +48,4 @@ end
 gem "rack-cors"
 gem 'mysql2'
 gem 'graphql'
+gem 'pg'
