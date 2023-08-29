@@ -42,10 +42,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'sass-rails'
-  gem 'graphiql-rails'
 end
 
 gem "rack-cors"
 gem 'mysql2'
 gem 'graphql'
 gem 'pg'
+gem 'graphiql-rails'
