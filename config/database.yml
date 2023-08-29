@@ -22,7 +22,10 @@ test:
   host: <%= ENV.fetch("APP_DATABASE_HOST") { 'db' } %>
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  database: sweet-spot_production
+  username: <%= ENV['DB_USERNAME_PROD'] %>
+  host: <%= ENV['DB_HOST_PROD'] %>
+  password: <%= ENV['DB_PASSWORD_PROD'] %>
+  ssl_mode: verify_identity
+  sslca: "/etc/ssl/certs/ca-certificates.crt"
