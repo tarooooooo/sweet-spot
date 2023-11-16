@@ -1,4 +1,7 @@
+require 'clerk/authenticatable'
 class GraphqlController < ApplicationController
+  include ActionController::Helpers
+  include Clerk::Authenticatable
   # If accessing from outside this domain, nullify the session
   # This allows for outside API access while preventing CSRF attacks,
   # but you'll have to authenticate your user separately
@@ -9,8 +12,7 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user,
     }
     result = SweetSpotSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -46,5 +48,13 @@ class GraphqlController < ApplicationController
     logger.error e.backtrace.join("\n")
 
     render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+  end
+
+  def current_user
+    return nil if clerk_user_id.blank?
+
+    @current_user ||= User.find_or_create_by!(uid: clerk_user_id, email:  clerk_user['email_addresses'][0]['email_address'])
+
+    raise 'ユーザーが存在しません。' unless @current_user
   end
 end

@@ -49,3 +49,6 @@ gem 'mysql2'
 gem 'graphql'
 gem 'pg'
 gem 'graphiql-rails'
+gem 'grape'
+gem 'pry-rails'
+gem 'clerk-sdk-ruby', require: "clerk"
