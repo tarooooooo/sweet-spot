@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :badminton_profile, dependent: :destroy
 
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
