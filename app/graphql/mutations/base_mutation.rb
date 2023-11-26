@@ -8,6 +8,7 @@ module Mutations
     private
 
     def current_user
+      puts "context[:current_user]: #{context[:current_user]}"
       context[:current_user]
     end
   end
