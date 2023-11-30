@@ -51,4 +51,5 @@ gem 'pg'
 gem 'graphiql-rails'
 gem 'grape'
 gem 'pry-rails'
+gem 'byebug'
 gem 'clerk-sdk-ruby', require: "clerk"

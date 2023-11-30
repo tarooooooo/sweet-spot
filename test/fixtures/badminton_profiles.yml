@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  play_duration: 1
+  level: 1
+  play_style: 1
+  position: 1
+
+two:
+  user: two
+  play_duration: 1
+  level: 1
+  play_style: 1
+  position: 1

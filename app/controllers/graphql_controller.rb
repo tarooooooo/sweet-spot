@@ -53,8 +53,11 @@ class GraphqlController < ApplicationController
   def current_user
     return nil if clerk_user_id.blank?
 
+
     @current_user ||= User.find_or_create_by!(uid: clerk_user_id, email:  clerk_user['email_addresses'][0]['email_address'])
 
+    puts "@current_user: #{@current_user}"
     raise 'ユーザーが存在しません。' unless @current_user
+    @current_user
   end
 end
